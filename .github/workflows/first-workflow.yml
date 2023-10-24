@@ -27,4 +27,5 @@ jobs:
 
       # Runs a HLD structure checking
       - name: Check-HLD-Structure
-        run: ls ${{ steps.Check-HLD-Structure.outputs.pullRequestFiles }}*.MD | xargs grep -l -P 'Overview' | xargs grep -l -P 'Functional requirements'| xargs grep -l -P 'Non-functional requirements'| xargs grep -l -P 'Solution'| xargs grep -l -P 'Involved flows'
+        run: ls ${{ github.workspace }}
+#        run: ls ${{ steps.Check-HLD-Structure.outputs.pullRequestFiles }}*.MD | xargs grep -l -P 'Overview' | xargs grep -l -P 'Functional requirements'| xargs grep -l -P 'Non-functional requirements'| xargs grep -l -P 'Solution'| xargs grep -l -P 'Involved flows'
