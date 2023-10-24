@@ -25,4 +25,4 @@ jobs:
 
       # Runs a HLD structure checking
       - name: Check HLD structure
-        run: ls *.MD | xargs grep -P "(?=.*Overview)(?=.*Functional requirements)(?=.*Non-functional requirements)(?=.*Solution)(?=.*Involved flows)"
+        run: ls *.MD | xargs grep -l -P "(?=.*Overview)(?=.*Functional requirements)(?=.*Non-functional requirements)(?=.*Solution)(?=.*Involved flows)"
