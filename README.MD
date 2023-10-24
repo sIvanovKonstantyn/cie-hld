@@ -3,8 +3,8 @@
 ## The document structure
 All the HLDs should contain the next sections:
 - Overview
-- Technical requirements
-- Non-technical requirements
+- Functional requirements
+- Non-functional requirements
 - Solution
 - Involved flows
 
