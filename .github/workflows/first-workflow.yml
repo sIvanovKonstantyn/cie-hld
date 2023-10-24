@@ -25,4 +25,4 @@ jobs:
 
       # Runs a HLD structure checking
       - name: Check HLD structure
-        run: ls
+        run: grep -r "functional" *.md
