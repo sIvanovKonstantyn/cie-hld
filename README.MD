@@ -1,12 +1,20 @@
 # High level documents of the system
 
-```mermaid
-  graph TD;
-      A-->B;
-      A-->C;
-      B-->D;
-      C-->D;
-```
+## The document structure
+All the HLDs should contain the next sections:
+- Overview
+- Technical requirements
+- Non-technical requirements
+- Solution
+- Involved flows
+
+_The additional requirements can be provided here_
+
+## The diagrams can be used to describe your design
+_The additional guidance can be provided here_
+
+### Flow diagram:
+_Description of use cases_
 
 ```mermaid
 flowchart TD;
@@ -17,12 +25,18 @@ flowchart TD;
     B -- No ----> E(((End)))
 ```
 
+### Sequence diagram:
+_Description of use cases_
+
 ```mermaid
 sequenceDiagram;
     Alice->>John: Hello John, how are you?
     John-->>Alice: Great!
     Alice-)John: See you later!
 ```
+
+### C4 model diagrams:
+_Description of use cases_
 
 ```mermaid
 C4Context
