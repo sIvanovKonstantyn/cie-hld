@@ -27,5 +27,20 @@ jobs:
 
       # Runs a HLD structure checking
       - name: Check-HLD-Structure
-        run: ls ${{ github.workspace }}
-#        run: ls ${{ steps.Check-HLD-Structure.outputs.pullRequestFiles }}*.MD | xargs grep -l -P 'Overview' | xargs grep -l -P 'Functional requirements'| xargs grep -l -P 'Non-functional requirements'| xargs grep -l -P 'Solution'| xargs grep -l -P 'Involved flows'
+        run: |
+        search_words=("Overview" "Functional requirements" "Non-functional requirements" "Solution" "Involved flows") \
+          for file in *.MD; do \
+          if [ -f "$file" ]; then \
+          # Check if all search words are present in the file \
+          all_present=true \
+          for word in "${search_words[@]}"; do \
+          if ! grep -q "$word" "$file"; then \
+          all_present=false \
+          break \
+          fi \
+          done \
+        if [ "$all_present" = true ]; then \
+        echo "File '$file' passes validation." \
+        fi \
+        fi \
+        done \
