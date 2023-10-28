@@ -22,25 +22,10 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
+      - name: Verify Changed files
+        uses: tj-actions/verify-changed-files@v16
+        id: verify-changed-files
 
-      # Runs a HLD structure checking
-      - name: Check-HLD-Structure
+      - name: List all changed files tracked and untracked files
         run: |
-        search_words=("Overview" "Functional requirements" "Non-functional requirements" "Solution" "Involved flows") \
-          for file in *.MD; do \
-          if [ -f "$file" ]; then \
-          # Check if all search words are present in the file \
-          all_present=true \
-          for word in "${search_words[@]}"; do \
-          if ! grep -q "$word" "$file"; then \
-          all_present=false \
-          break \
-          fi \
-          done \
-        if [ "$all_present" = true ]; then \
-        echo "File '$file' passes validation." \
-        fi \
-        fi \
-        done \
+          echo "Changed files: ${{ steps.verify-changed-files.outputs.changed_files }}"
