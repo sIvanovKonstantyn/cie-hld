@@ -1,38 +1,18 @@
-# This is a basic workflow to help you get started with Actions
+name: "Check PR content"
+on: [pull_request]
 
-name: CI
-
-# Controls when the workflow will run
-on:
-  # Triggers the workflow on push or pull request events but only for the "main" branch
-  pull_request:
-    types: [ opened ]
-    paths:
-      - '**.MD'
-
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "design-document-validation"
-  design-document-validation:
-    # The type of runner that the job will run on
+  check_pr:
     runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
-
-      - name: Verify Changed files
-        uses: tj-actions/verify-changed-files@v16
-        id: verify-changed-files
+      - name: Check PR
+        uses: JJ/github-pr-contains-action@releases/v11
         with:
-          files: |
-            *.MD
-
-      - name: Run step only when any of the above files change.
-        if: steps.verify-changed-files.outputs.files_changed == 'true'
-        run: |
-          echo "Changed files: ${{ steps.verify-changed-files.outputs.changed_files }}"
+          github-token: ${{github.token}}
+          bodyDoesNotContain: "Delete|this"
+          bodyContains: 'Test'
+          diffContains: ';'
+          diffDoesNotContain: "TODO|to do"
+          filesChanged: 1
+          linesChanged: 1
+          waivedUsers: ["dependabot[bot]"]
