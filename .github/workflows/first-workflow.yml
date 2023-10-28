@@ -12,4 +12,4 @@ jobs:
         with:
           github-token: ${{github.token}}
           bodyContains: 'Description:'
-          diffContains: '(?=.*\bOverview\b).+'
+          diffContains: 'Overview'
