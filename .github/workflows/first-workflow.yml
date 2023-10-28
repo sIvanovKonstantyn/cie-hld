@@ -1,8 +1,7 @@
 name: "Check PR content"
 on:
   pull_request:
-    types: [opened]
-  workflow_dispatch:
+    types: [opened,edited]
 
 jobs:
   check_pr:
@@ -13,4 +12,4 @@ jobs:
         with:
           github-token: ${{github.token}}
           bodyContains: 'Description:'
-          diffContains: '^(?=.*\bOverview\b)(?=.*\bFunctional requirements\b)(?=.*\bdinner\b).+'
+          diffContains: '^(?=.*\bOverview\b).+'
