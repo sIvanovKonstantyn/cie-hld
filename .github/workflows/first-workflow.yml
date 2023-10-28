@@ -16,5 +16,3 @@ jobs:
           bodyContains: 'Test'
           diffContains: ';'
           diffDoesNotContain: "TODO|to do"
-          waivedUsers: |
-            "dependabot[bot]"
