@@ -12,7 +12,5 @@ jobs:
         uses: JJ/github-pr-contains-action@releases/v11
         with:
           github-token: ${{github.token}}
-          bodyDoesNotContain: "Delete|this"
-          bodyContains: 'Test'
-          diffContains: ';'
-          diffDoesNotContain: "TODO|to do"
+          bodyContains: 'Description:'
+          diffContains: '^(?=.*\bOverview\b)(?=.*\bFunctional requirements\b)(?=.*\bdinner\b).+'
