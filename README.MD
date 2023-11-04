@@ -18,11 +18,10 @@ _Description of use cases_
 
 ```mermaid
 flowchart TD;
-    A(((Start))) --> B{Is it?}
-    B -- Yes --> C[OK]
-    C --> D[Rethink]
-    D --> B
-    B -- No ----> E(((End)))
+    S(((Start))) --> CB(Check balance) --> IP{Is positive?}
+    IP -- No --> E[OK]
+    IP -- Yes --> SM[Send money]
+    SM --> E(((End)))
 ```
 
 ### Sequence diagram:
